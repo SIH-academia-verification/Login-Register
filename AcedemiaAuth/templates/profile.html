@@ -1,0 +1,227 @@
+<html><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet"/>
+<title>Profile Page</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --primary-color: #dce7f3;
+        --secondary-color: #f0f4f8;--accent-color: #3b82f6;
+        --text-primary: #1f2937;
+        --text-secondary: #6b7280;
+        --border-color: #e5e7eb;
+      }
+      body {
+        font-family: 'Inter', "Noto Sans", sans-serif;
+      }
+      .material-icons {
+        font-family: 'Material Icons';
+        font-weight: normal;
+        font-style: normal;
+        font-size: 24px;
+        display: inline-block;
+        line-height: 1;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: normal;
+        white-space: nowrap;
+        direction: ltr;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        -moz-osx-font-smoothing: grayscale;
+        font-feature-settings: 'liga';
+      }
+    </style>
+</head>
+<body class="bg-[var(--secondary-color)]">
+<div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[var(--border-color)] px-6 md:px-10 py-4 bg-white shadow-sm">
+<div class="flex items-center gap-3 text-[var(--text-primary)]">
+<div class="size-6 text-[var(--accent-color)]">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-tight">OurBrand</h2>
+</div>
+<div class="flex flex-1 justify-end items-center gap-6">
+<nav class="hidden md:flex items-center gap-6">
+</nav>
+<button aria-label="Notifications" class="flex items-center justify-center rounded-full h-10 w-10 bg-[var(--primary-color)] text-[var(--text-primary)] hover:bg-opacity-80 transition-colors">
+<span class="material-icons text-[var(--text-primary)]">notifications</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-[var(--accent-color)]" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCHfu-pYijMZ-6Guz5BGf-r-NOXY3mZrQgIvVnCchl7wSv1afUJhTYtTVLlQwd1TmyaFa_CzmGrZd39WjBlAs3DhmEPbdlv6J6FtNCsxkuASruJVKhY2uqUiBBl2mEEw0CKrSO1vFfWN1nXALPPMXbHmiJhM1I7e4ejtKptYh33dTz7i3s3ClgpLlJrOikmmB8IfR5wZwU5v9oSQbU8XIGLlDMuk4XLAjWopIYKOHypxycgzkAIyMtqWov1lHsdIKX5oCaMJroM7OHu");'></div>
+<button aria-label="Menu" class="md:hidden flex items-center justify-center rounded-full h-10 w-10 bg-[var(--primary-color)] text-[var(--text-primary)] hover:bg-opacity-80 transition-colors">
+<span class="material-icons text-[var(--text-primary)]">menu</span>
+</button>
+</div>
+</header>
+<main class="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 flex flex-1 justify-center py-8 bg-[var(--secondary-color)]">
+<div class="layout-content-container flex flex-col max-w-5xl flex-1 gap-8">
+<section class="bg-white shadow-lg rounded-xl p-6 @container">
+<div class="flex flex-col md:flex-row w-full gap-6 items-center md:items-start">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-32 w-32 md:min-h-40 md:w-40 border-4 border-[var(--primary-color)] shadow-md" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAeu2C5vqfbQO0XTf1zXfueMxwQz8rZZ2w4lG8tSQmJADDuQ6Xp3VEkQRffpSDUjMJhUKoFAJepAkid6LetvtvhPOoksCGicx43Izl-jpGAVCUxN1PlODb0pabP1PqSCU5m4n-5Vnjh9nkqv1Rk0XoEiLB7EnVIiHTOCqjQaRQzqlU7voATR5tBa2vlkAyGqbDBL3xPwhKO3GffuXC-ztTG4pfI7kFrZBswV96zU3YON9GSLjzz6SxlM4CJ7eOSdL4xmRAQ7u1WNbLP");'></div>
+<div class="flex flex-col items-center md:items-start justify-center flex-1">
+<h1 class="text-[var(--text-primary)] text-3xl font-bold leading-tight tracking-tight">{{request.user.first_name}}</h1>
+<p class="text-[var(--text-secondary)] text-lg font-normal leading-normal mt-1">{{request.user.username}}</p>
+{% comment %} <p class="text-[var(--text-secondary)] text-base font-normal leading-normal">{{request.user.password}}</p> {% endcomment %}
+<button class="mt-4 flex items-center justify-center gap-2 min-w-[120px] cursor-pointer rounded-full h-10 px-6 bg-[var(--accent-color)] text-white text-sm font-bold leading-normal tracking-wide hover:bg-opacity-90 transition-colors w-full @[480px]:w-auto">
+<span class="material-icons text-lg">edit</span>
+<span class="truncate">Edit Profile</span>
+</button>
+</div>
+</div>
+</section>
+<div class="bg-white shadow-lg rounded-xl overflow-hidden">
+<div class="border-b border-[var(--border-color)] px-6">
+<nav class="flex gap-4 md:gap-8 -mb-px items-center">
+<a class="flex items-center justify-center border-b-2 border-[var(--accent-color)] text-[var(--accent-color)] py-3 px-1" href="#">
+<p class="text-sm font-semibold leading-normal tracking-wide">Overview</p>
+</a>
+<a class="flex items-center justify-center border-b-2 border-transparent text-[var(--text-secondary)] hover:text-[var(--accent-color)] hover:border-[var(--accent-color)] py-3 px-1 transition-colors" href="#">
+<p class="text-sm font-semibold leading-normal tracking-wide">Services</p>
+</a>
+<a class="flex items-center justify-center border-b-2 border-transparent text-[var(--text-secondary)] hover:text-[var(--accent-color)] hover:border-[var(--accent-color)] py-3 px-1 transition-colors" href="#">
+<p class="text-sm font-semibold leading-normal tracking-wide">Reviews</p>
+</a>
+<a class="flex items-center justify-center border-b-2 border-transparent text-[var(--text-secondary)] hover:text-[var(--accent-color)] hover:border-[var(--accent-color)] py-3 px-1 transition-colors" href="#">
+<p class="text-sm font-semibold leading-normal tracking-wide">Settings</p>
+</a>
+<a class="ml-auto flex items-center justify-center gap-2 rounded-md h-9 px-4 bg-red-500 text-white text-sm font-medium leading-normal tracking-wide hover:bg-red-600 transition-colors" href="/logout">
+<span class="material-icons text-lg">logout</span>
+<span>Logout</span>
+</a>
+</nav>
+</div>
+<div class="p-6">
+<section id="overview">
+<h2 class="text-[var(--text-primary)] text-2xl font-bold leading-tight tracking-tight mb-3">About</h2>
+<p class="text-[var(--text-primary)] text-base font-normal leading-relaxed">
+                    Sophia is a seasoned professional with over 10 years of experience in the tech industry. She specializes in product management and has a proven track record of
+                    successfully launching innovative products. Sophia is passionate about leveraging technology to solve real-world problems and is always eager to take on new
+                    challenges.
+                  </p>
+</section>
+<section class="mt-8" id="services">
+<h2 class="text-[var(--text-primary)] text-2xl font-bold leading-tight tracking-tight mb-4">Services</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-[var(--secondary-color)] rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+<div class="w-full sm:w-1/3 h-32 sm:h-auto sm:aspect-square bg-center bg-no-repeat bg-cover rounded-lg" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBCqxvcr_kpDxknbKYuklfvsuXO5Vh-rnG9PTRloOZIhyG_v15BgSAx9Xp4uXTKkRFbjt0qjD3EMaINEvTP4FRp83WVvADePlib0URXf1OVfzBnb6kfwl0nuVvtoa9dbMtS7PSQFoxM5DOUXRfQuyJlSb5mwaZ9dhH6UuasoVKheQXl6fn6RFZfMiO-vTNIPbwQBj5ahEszi0ONZym7b66WZVkiDnI8Z0q0bBC_hNXzhtDXbpnh8p6YJ1qpKSGE7oNOcONQlRAU7MvY");'></div>
+<div class="flex flex-col gap-1 flex-1">
+<p class="text-[var(--text-secondary)] text-xs font-medium uppercase tracking-wider">Product Management</p>
+<p class="text-[var(--text-primary)] text-lg font-semibold leading-tight">Product Strategy &amp; Roadmap</p>
+<p class="text-[var(--text-secondary)] text-sm font-normal leading-normal mt-1">Crafting comprehensive product strategies and roadmaps.</p>
+</div>
+</div>
+</div>
+<div class="bg-[var(--secondary-color)] rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+<div class="w-full sm:w-1/3 h-32 sm:h-auto sm:aspect-square bg-center bg-no-repeat bg-cover rounded-lg" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBqCKWvdC6-HK04ia4nNVsMshF5QCZFpHiz8pZue3fazqDsnZ50YLpODlVIkHv7WOPYhMLRYRleRtVLdmTPqGF3zrp6JAwBdyQJ3lHqJZzYLn1Cjbg0lMnDGS6_sCrncyekSX3n-8gOG2HLmYSXK7iBjsnEKeHDHyBYsu1KFJ9myps0hC_TZlau6JQagr2IiOa04d2MekZmALUCnuVhOyeTXL6uds71QqAPzZDHfjcILoIO8oFSu2W1EjpOfRN6M7JBbRpKDLluebqK");'></div>
+<div class="flex flex-col gap-1 flex-1">
+<p class="text-[var(--text-secondary)] text-xs font-medium uppercase tracking-wider">Market Research</p>
+<p class="text-[var(--text-primary)] text-lg font-semibold leading-tight">Market Analysis</p>
+<p class="text-[var(--text-secondary)] text-sm font-normal leading-normal mt-1">Conducting market research and competitive analysis.</p>
+</div>
+</div>
+</div>
+<div class="bg-[var(--secondary-color)] rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+<div class="w-full sm:w-1/3 h-32 sm:h-auto sm:aspect-square bg-center bg-no-repeat bg-cover rounded-lg" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCaxcDPqWwYbyUhb3aAEnSEsqjHT7rPNBrl7M2PmV6xGOCcXBCTl5E4cNzkzA8aNWHkl76o6sZQ8E7_utTRN2K6nNq3eJAbfagoVn2NpBRG186ykB8OAraXmMfvxw9d78kzqdtxZ8xh5KgWaBplwCMrPFyLrC4VZ4PBDW9qFAaarfkwr42IElfLy5GqzXDCod9QcGvRjIY0v3mh2WM9hD_uEo_M-5wXbhPSyLPRaM4-oiurD43TvPzaLQmOp9ViaMq8oBtqdJknR3wk");'></div>
+<div class="flex flex-col gap-1 flex-1">
+<p class="text-[var(--text-secondary)] text-xs font-medium uppercase tracking-wider">User Experience</p>
+<p class="text-[var(--text-primary)] text-lg font-semibold leading-tight">UX Design &amp; Testing</p>
+<p class="text-[var(--text-secondary)] text-sm font-normal leading-normal mt-1">Designing intuitive interfaces through user research.</p>
+</div>
+</div>
+</div>
+<div class="bg-[var(--secondary-color)] rounded-lg p-5 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+<div class="w-full sm:w-1/3 h-32 sm:h-auto sm:aspect-square bg-center bg-no-repeat bg-cover rounded-lg" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBNaWGYH5vn1_YTUIQKXTyeDPHe3rWuyPYD5XflvT5VTObJzUaP6m5XFaOk5osj52CEFJmBgjgRsvhxhdQNrNKmWyZJG2nIUBW4amxvL_ALUuaoQTVpBVGYPo7ZbDr7krU-cjZ04o4yR8eWn8Dwietj3Q099AwiHRjmYJkF8dCUSalMhs0MYaOoamsTXUKV-Duz28ITYrlWJ14SavWKJI4KbrOvfr8zNRxxpM58GsbQ3ryrdMo4gBpYNizzbTCR2dFmabbRRvjVQIDF");'></div>
+<div class="flex flex-col gap-1 flex-1">
+<p class="text-[var(--text-secondary)] text-xs font-medium uppercase tracking-wider">Project Management</p>
+<p class="text-[var(--text-primary)] text-lg font-semibold leading-tight">Agile Project Management</p>
+<p class="text-[var(--text-secondary)] text-sm font-normal leading-normal mt-1">Managing projects using Agile for timely delivery.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="mt-8" id="reviews">
+<h2 class="text-[var(--text-primary)] text-2xl font-bold leading-tight tracking-tight mb-4">Reviews</h2>
+<div class="flex flex-col gap-6">
+<div class="flex flex-col gap-3 bg-white border border-[var(--border-color)] rounded-lg p-4 shadow-sm">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-[var(--border-color)]" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC1_JKQKhHhoA9YWleCU981I1qFynUCLxgUcD7duDKj8eXHSrBDItfjMUng5Y9wkjUP_FSImcSbXBP2gjONKeldlY5Z8r54srcR_YLNnu_JEeixCUvS8rNm4gJJS8wKp-hPbfjhgVfXlVhkv28DqHnI5wQlxcSj6YYkkWZKUtIYFeCpQJaErVlqCn3cW6nxr4BtR7BjiAZM5NBkd_gJW8PNTHbwlo80KFxd8KSfSYRvXBdvJgv8BlmnO8u_Lkk990VINJOE1y4ycTsr");'></div>
+<div class="flex-1">
+<p class="text-[var(--text-primary)] text-base font-medium leading-normal">Ethan Harper</p>
+<p class="text-[var(--text-secondary)] text-sm font-normal leading-normal">2 months ago</p>
+</div>
+</div>
+<div class="flex gap-0.5 text-yellow-400">
+<span class="material-icons text-lg">star</span>
+<span class="material-icons text-lg">star</span>
+<span class="material-icons text-lg">star</span>
+<span class="material-icons text-lg">star</span>
+<span class="material-icons text-lg">star</span>
+</div>
+<p class="text-[var(--text-primary)] text-base font-normal leading-relaxed">
+                        Sophia's expertise in product management is unparalleled. She helped us define a clear product strategy and roadmap that has been instrumental in our success.
+                        Her insights and guidance were invaluable throughout the entire process.
+                      </p>
+<div class="flex gap-4 text-[var(--text-secondary)]">
+<button class="flex items-center gap-1.5 hover:text-[var(--accent-color)] transition-colors">
+<span class="material-icons text-xl">thumb_up</span>
+<p class="text-sm">3</p>
+</button>
+<button class="flex items-center gap-1.5 hover:text-[var(--accent-color)] transition-colors">
+<span class="material-icons text-xl">thumb_down</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-3 bg-white border border-[var(--border-color)] rounded-lg p-4 shadow-sm">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-[var(--border-color)]" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC9gYg7emIkiO_CwV8gJejzR8cGRkFKqRKYvzFdhLbCCEYmO0MdKI4rFRCfasVFML8xnGXbTJXBBD1xecFEt_NWsIOx00UsOr-uSA7S2JplWcb0BGHMdcWXWCKPUNQLK8c2HrMcAnNhzuy_8Abg2sSFoEeMiGREmtTJcBQCIWKaNrcZ2jwGrAhRg9KAm0u_enysHRGrzLWInBHnYVO-oPWFGkfNOxV8e_VL2XLDVSLgVfVFfNntENtOAGU-2sDiThKr0ZEcOP53s3wo");'></div>
+<div class="flex-1">
+<p class="text-[var(--text-primary)] text-base font-medium leading-normal">Olivia Bennett</p>
+<p class="text-[var(--text-secondary)] text-sm font-normal leading-normal">6 months ago</p>
+</div>
+</div>
+<div class="flex gap-0.5 text-yellow-400">
+<span class="material-icons text-lg">star</span>
+<span class="material-icons text-lg">star</span>
+<span class="material-icons text-lg">star</span>
+<span class="material-icons text-lg">star</span>
+<span class="material-icons text-lg text-gray-300">star_border</span>
+</div>
+<p class="text-[var(--text-primary)] text-base font-normal leading-relaxed">
+                        Sophia is a highly skilled professional with a deep understanding of market dynamics and user needs. Her market analysis and competitive intelligence were
+                        crucial in shaping our product positioning. We highly recommend her services.
+                      </p>
+<div class="flex gap-4 text-[var(--text-secondary)]">
+<button class="flex items-center gap-1.5 hover:text-[var(--accent-color)] transition-colors">
+<span class="material-icons text-xl">thumb_up</span>
+<p class="text-sm">2</p>
+</button>
+<button class="flex items-center gap-1.5 hover:text-[var(--accent-color)] transition-colors">
+<span class="material-icons text-xl">thumb_down</span>
+<p class="text-sm">1</p>
+</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+<footer class="py-8 text-center text-[var(--text-secondary)] text-sm border-t border-[var(--border-color)] bg-white">
+<p>© 2024 ConnectU. All rights reserved.</p>
+</footer>
+</div>
+</div>
+</body></html>

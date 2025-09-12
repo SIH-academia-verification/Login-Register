@@ -1,0 +1,104 @@
+<html><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<title>Register Page</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --primary-color: #dce7f3;
+        --secondary-color: #121416;
+        --accent-color: #6a7581;
+        --background-color: #ffffff;
+        --border-color: #dde0e3;
+        --muted-border-color: #f1f2f4;
+      }
+      body {
+        font-family: "Inter", "Noto Sans", sans-serif;
+      }
+    </style>
+</head>
+<body class="bg-[var(--background-color)] text-[var(--secondary-color)]">
+<div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[var(--muted-border-color)] px-6 sm:px-10 py-4">
+<div class="flex items-center gap-3 sm:gap-4 text-[var(--secondary-color)]">
+<div class="size-5 sm:size-6">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0ZM24 44C12.9543 44 4 35.0457 4 24C4 12.9543 12.9543 4 24 4C35.0457 4 44 12.9543 44 24C44 35.0457 35.0457 44 24 44Z" fill="currentColor"></path>
+<path d="M24 12C17.3726 12 12 17.3726 12 24H16C16 19.5817 19.5817 16 24 16V12Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-[var(--secondary-color)] text-xl sm:text-2xl font-bold leading-tight tracking-[-0.015em]">OurBrand</h2>
+</div>
+</header>
+<main class="flex flex-1 justify-center items-center py-8 sm:py-12 px-4 sm:px-6">
+<div class="layout-content-container flex flex-col w-full max-w-md space-y-6 sm:space-y-8">
+<h2 class="text-[var(--secondary-color)] text-3xl sm:text-4xl font-bold leading-tight tracking-tight text-center">Register</h2>
+
+<form class="space-y-6" method="post" action="/register/" enctype="multipart/form-data">
+    {% csrf_token %}
+
+
+    <!-- Name -->
+    <div>
+        <label class="block text-sm font-medium text-[var(--secondary-color)] pb-1.5" for="name">Name</label>
+        <input class="form-input block w-full rounded-lg border-[var(--border-color)] bg-[var(--background-color)] h-12 px-4 text-sm 
+            placeholder:text-[var(--accent-color)] focus:border-[var(--primary-color)] focus:ring focus:ring-[var(--primary-color)] focus:ring-opacity-50"
+            id="name" name="name" placeholder="Enter your name" type="text" required>
+    </div>
+    
+    <!-- Username -->
+    <div>
+        <label class="block text-sm font-medium text-[var(--secondary-color)] pb-1.5" for="username">Username</label>
+        <input class="form-input block w-full rounded-lg border-[var(--border-color)] bg-[var(--background-color)] h-12 px-4 text-sm 
+            placeholder:text-[var(--accent-color)] focus:border-[var(--primary-color)] focus:ring focus:ring-[var(--primary-color)] focus:ring-opacity-50"
+            id="username" name="username" placeholder="Enter your username" type="text" required>
+    </div>
+    
+    <!-- Certificate Upload -->
+    <div>
+        <label class="block text-sm font-medium text-[var(--secondary-color)] pb-1.5" for="certificate">Certificate</label>
+        <input class="form-input block w-full rounded-lg border-[var(--border-color)] bg-[var(--background-color)] h-12 px-4 text-sm 
+            placeholder:text-[var(--accent-color)] focus:border-[var(--primary-color)] focus:ring focus:ring-[var(--primary-color)] focus:ring-opacity-50"
+            id="certificate" name="certificate" type="file" required>
+    </div>
+
+
+
+    <!-- Phone -->
+    <div>
+        <label class="block text-sm font-medium text-[var(--secondary-color)] pb-1.5" for="phone">Phone</label>
+        <input class="form-input block w-full rounded-lg border-[var(--border-color)] bg-[var(--background-color)] h-12 px-4 text-sm 
+            placeholder:text-[var(--accent-color)] focus:border-[var(--primary-color)] focus:ring focus:ring-[var(--primary-color)] focus:ring-opacity-50"
+            id="phone" name="phone" placeholder="Enter your phone number" type="tel" required>
+    </div>
+
+    <!-- Password -->
+    <div>
+        <label class="block text-sm font-medium text-[var(--secondary-color)] pb-1.5" for="password">Password</label>
+        <input class="form-input block w-full rounded-lg border-[var(--border-color)] bg-[var(--background-color)] h-12 px-4 text-sm 
+            placeholder:text-[var(--accent-color)] focus:border-[var(--primary-color)] focus:ring focus:ring-[var(--primary-color)] focus:ring-opacity-50"
+            id="password" name="password" placeholder="Enter your password" type="password" required>
+    </div>
+
+    <!-- Submit -->
+    <button class="flex w-full cursor-pointer items-center justify-center rounded-full h-12 px-6 
+        bg-[var(--primary-color)] text-[var(--secondary-color)] text-base font-semibold leading-normal tracking-wide 
+        hover:bg-opacity-80 transition-colors" type="submit">
+        <span class="truncate">Sign up</span>
+    </button>
+</form>
+
+
+<p class="text-[var(--accent-color)] text-sm font-normal text-center">
+              Already have an account?
+              <a class="font-medium text-[var(--secondary-color)] hover:text-[var(--primary-color)] underline hover:no-underline transition-colors" href="/login">Login</a>
+</p>
+</div>
+</main>
+</div>
+</div>
+</body></html>
+method="post" action="/register/" enctype="multipart/form-data"

@@ -1,0 +1,130 @@
+<html><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<title>Verify Page</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+    :root {
+      --primary-color: #dce7f3;
+      --secondary-color: #121416;
+      --accent-color: #3b82f6;
+      --background-color: #ffffff;
+      --form-input-border: #dde0e3;
+      --text-muted: #6a7581;
+      --page-background: #f0f4f8;}
+    body {
+      font-family: Inter, "Noto Sans", sans-serif;
+    }
+    .form-input {
+      @apply flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg border border-[var(--form-input-border)] bg-[var(--background-color)] focus:border-[var(--accent-color)] focus:ring-1 focus:ring-[var(--accent-color)] h-12 placeholder:text-[var(--text-muted)] p-3 text-sm font-normal leading-normal transition-colors duration-200;
+    }
+    .btn-primary {
+      @apply flex min-w-[84px] items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-[var(--accent-color)] text-white text-base font-semibold leading-normal tracking-wide hover:bg-blue-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)] focus:ring-offset-2;
+    }
+    .btn-secondary {
+      @apply flex min-w-[84px] items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-slate-100 text-[var(--secondary-color)] text-sm font-medium leading-normal tracking-wide hover:bg-slate-200 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)] focus:ring-offset-2;
+    }
+    .link {
+      @apply text-[var(--accent-color)] hover:text-blue-700 text-sm font-medium leading-normal underline transition-colors duration-200;
+    }
+  </style>
+</head>
+<body class="bg-[var(--page-background)] text-[var(--secondary-color)]">
+<div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 bg-white px-6 sm:px-10 py-4">
+<a class="flex items-center gap-3 text-[var(--secondary-color)]" href="/">
+<img alt="Stitch Design Logo" class="h-8 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKKV7Xi6eONeVJFxsc2OkTnsG7zoXZ_6aDTbM_vXXHS1JfyZe9IG_TaTS1h3fhAuandNW0H4k4jSuIkKC3SvOuZFYBcU__KjCP32aukjYLjIFhneCKykFo-LCo7PMsdujHQLUVZZORV8iZbLWz1OFBggNaW1R5xIUOX2TnAPcN5fvp-6JLpoqTJUwIFPQq51H9bviDndxuAMZxzMVoChC0zkKmv2c6HPW9_Y6Gi8fXoVF9b4HK47FA7QIWyngDTNSfsj-TV48-RNt-"/>
+<h1 class="text-[var(--secondary-color)] text-xl font-bold leading-tight tracking-tight">OurBrand</h1>
+</a>
+<nav class="flex items-center gap-6">
+<a class="btn-secondary" href="/register"><span class="truncate">Register</span></a>
+</nav>
+</header>
+<main class="flex flex-1 items-center justify-center py-10 sm:py-16 px-4">
+<div class="layout-content-container w-full max-w-md rounded-xl border border-slate-200 bg-white p-6 sm:p-10 shadow-lg">
+<h2 class="text-[var(--secondary-color)] tracking-tight text-3xl font-bold text-center mb-8">Welcome Back</h2>
+
+<!-- Added enctype and id for JS -->
+<form id="loginForm" class="space-y-6" method="post" action="/login/" enctype="multipart/form-data">
+    {% csrf_token %}
+<div>
+<label class="block text-[var(--secondary-color)] text-sm font-medium leading-normal pb-1.5" for="email">Name</label>
+<input class="form-input" id="email" name="name" placeholder="Enter your username" required="" type="text"/>
+</div>
+<div>
+<div class="flex items-center justify-between">
+<label class="block text-[var(--secondary-color)] text-sm font-medium leading-normal pb-1.5" for="password">Password</label>
+<a class="link" href="#">Forgot password?</a>
+</div>
+<input class="form-input" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+</div>
+
+<!-- Certificate file input -->
+<div>
+  <label class="block text-[var(--secondary-color)] text-sm font-medium leading-normal pb-1.5" for="certificate">Certificate file</label>
+  <input
+    id="certificate"
+    name="certificate"
+    type="file"
+    accept=".pdf,.png,.jpg"
+    class="form-input"
+  />
+  <div id="certName" class="text-sm text-[var(--text-muted)] mt-2" aria-live="polite"></div>
+</div>
+    
+<div>
+<button id="submitBtn" class="btn-primary w-full" type="submit">
+<span class="truncate">Log In</span>
+</button>
+</div>
+</form>
+<p class="text-[var(--text-muted)] text-sm font-normal leading-normal text-center mt-8">
+            Don't have an account? <a class="link font-semibold" href="/register">Register</a>
+</p>
+</div>
+</main>
+<footer class="py-8 px-6 sm:px-10 text-center border-t border-slate-200 bg-white">
+<p class="text-sm text-[var(--text-muted)]">© 2024 Stitch Design. All rights reserved.</p>
+</footer>
+</div>
+</div>
+
+<script>
+  // show selected filename and prevent double submit
+  (function () {
+    const certInput = document.getElementById('certificate');
+    const certName = document.getElementById('certName');
+    const form = document.getElementById('loginForm');
+    const submitBtn = document.getElementById('submitBtn');
+
+    if (certInput) {
+      certInput.addEventListener('change', () => {
+        const f = certInput.files[0];
+        if (f) {
+          const sizeKB = Math.round(f.size / 1024);
+          certName.textContent = `Selected: ${f.name} (${sizeKB} KB)`;
+        } else {
+          certName.textContent = '';
+        }
+      });
+    }
+
+    // basic client-side check & prevent double submit
+    form.addEventListener('submit', (e) => {
+      if (!document.getElementById('email').value.trim() ||
+          !document.getElementById('password').value ||
+          !certInput.files.length) {
+        e.preventDefault();
+        alert('Please provide username, password and the certificate file.');
+        return;
+      }
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Logging in…';
+    });
+  })();
+</script>
+
+</body></html>
